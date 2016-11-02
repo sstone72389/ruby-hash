@@ -1,6 +1,6 @@
 ![General Assembly Logo](http://i.imgur.com/ke8USTq.png)
 
-# Ruby Hashes (versus JavaScript dictionaries)
+# Ruby Hashes
 
 ## Instructions
 
@@ -10,7 +10,6 @@ Fork, clone, branch (training), `bundle install`
 
 By the end of this, students should be able to:
 
--   Constrast Ruby Hashes with JavaScript dictionaries.
 -   Create a Ruby Hash using both the implicit (`{}`) and `new` constructors.
 -   Assign a value to or modify a value in a Ruby Hash using a specified key.
 -   Access a value in a Ruby Hash using a specified key.
@@ -21,13 +20,13 @@ By the end of this, students should be able to:
 
 In Ruby, "A Hash is a dictionary-like collection of unique keys and their
  values".  In sharp contrast to JavaScript,
-[Ruby Hashes](http://ruby-doc.org/core-2.3.0/Hash.html) are not the most general
+[Ruby Hashes](http://ruby-doc.org/core-2.3.1/Hash.html) are not the most general
  object in the language, but are instances of a specialized class for key/value
  storage.
 
 ## Ruby Symbols
 
-A [Symbol](http://ruby-doc.org/core-2.3.0/Symbol.html) is a sequence of
+A [Symbol](http://ruby-doc.org/core-2.3.1/Symbol.html) is a sequence of
  characters that is stored at most once in any instance of the Ruby interpreter.
 
 In Ruby, strings are compared a character at a time, but symbols are compared by
@@ -106,13 +105,13 @@ Picking sensible defaults may not always be easy.
 
 ### Code Along: Hash::new
 
-Let's use the different forms of [Hash::new](http://ruby-doc.org/core-2.2.4/Hash.html#method-c-new)
+Let's use the different forms of [Hash::new](http://ruby-doc.org/core-2.3.1/Hash.html#method-c-new)
 to create some hashes in `bin/code_along.rb`.
 
 ### Lab: Hash Shorthand
 
 In [bin/lab.rb](bin/lab.rb) create a hash using the shorthand syntax for
-assigning the keys `:education` and `:experience` with the string "GA WDI".
+assigning the keys `:education` and `:experience` with the string `"GA WDI"`.
 Then assign a default of `[]` to the hash and make sure that accessing
  non-existing keys return the default.
 
@@ -137,7 +136,7 @@ Then assign a default of `[]` to the hash and make sure that accessing
 
 ### Lab: Appending
 
-Append `" Boston"` to both `:experience` and `:education` in the hash in
+Append `"GA Boston"` to both `:experience` and `:education` in the hash in
 [bin/lab.rb](bin/lab.rb).  Append one or more item of your choosing to the
 values at each of these keys.
 
@@ -156,7 +155,7 @@ If you noticed during the demo above, we were able to add a default value of
 an empty string to the `consultant` hash using `consultant.default = ''`.
 
 What if we wanted to instantiate our new hash with this default right off the
- bat? Checkout the Ruby docs on [new hashes with default blocks](http://ruby-doc.org/core-2.3.0/Hash.html#new-method).
+ bat? Checkout the Ruby docs on [new hashes with default blocks](http://ruby-doc.org/core-2.3.1/Hash.html#new-method).
 
 Then, in `bin/lab.rb` initialize a new hash using `Hash.new` with a block that
  sets the default value (without using `.default`) of all keys to the string

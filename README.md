@@ -8,7 +8,7 @@ Fork, clone, branch (training), `bundle install`
 
 ## Objectives
 
-By the end of this, students should be able to:
+By the end of this, developers should be able to:
 
 -   Create a Ruby Hash using both the implicit (`{}`) and `new` constructors.
 -   Assign a value to or modify a value in a Ruby Hash using a specified key.

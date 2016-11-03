@@ -110,7 +110,7 @@ accessing non-existing keys return the default.
 
 ## Assigning and Accessing Elements in a Ruby Hash
 
-### Demo: Assigning and Accessing
+### Demo: Accessing, Modifying, and Deleting
 
 ```ruby
 > apartment[:occupants] = []

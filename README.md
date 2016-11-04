@@ -1,6 +1,6 @@
 ![General Assembly Logo](http://i.imgur.com/ke8USTq.png)
 
-# Ruby Hashes (versus JavaScript dictionaries)
+# Ruby Hashes
 
 ## Instructions
 
@@ -8,11 +8,10 @@ Fork, clone, branch (training), `bundle install`
 
 ## Objectives
 
-By the end of this, students should be able to:
+By the end of this, developers should be able to:
 
--   Constrast Ruby Hashes with JavaScript dictionaries.
 -   Create a Ruby Hash using both the implicit (`{}`) and `new` constructors.
--   Assign a value to or modify a value in a Ruby Hash using a specified key.
+-   Assign a value to, modify, and delete a value in a Ruby Hash using a specified key.
 -   Access a value in a Ruby Hash using a specified key.
 -   Obtain an Array of keys from a Ruby Hash.
 -   Explain why Symbols are preferred over Strings as keys in a Ruby Hash.
@@ -21,13 +20,13 @@ By the end of this, students should be able to:
 
 In Ruby, "A Hash is a dictionary-like collection of unique keys and their
  values".  In sharp contrast to JavaScript,
-[Ruby Hashes](http://ruby-doc.org/core-2.3.0/Hash.html) are not the most general
+[Ruby Hashes](http://ruby-doc.org/core-2.3.1/Hash.html) are not the most general
  object in the language, but are instances of a specialized class for key/value
  storage.
 
 ## Ruby Symbols
 
-A [Symbol](http://ruby-doc.org/core-2.3.0/Symbol.html) is a sequence of
+A [Symbol](http://ruby-doc.org/core-2.3.1/Symbol.html) is a sequence of
  characters that is stored at most once in any instance of the Ruby interpreter.
 
 In Ruby, strings are compared a character at a time, but symbols are compared by
@@ -79,84 +78,77 @@ Let's look at different ways to create a Hash.
 ### Demo: Hash Creation
 
 ```ruby
-> consultant = {}
+> apartment = {}
 => {}
-> consultant = Hash.new
+> apartment = Hash.new
 => {}
-> consultant = Hash.new('')
+> apartment = Hash.new('')
 => {}
-> consultant.default = ''
+> apartment.default = ''
 => ""
-> consultant[:surname]
+> apartment[:address]
 => ""
-> consultant
-=> {}
-> consultant = { given_name: 'Lauren', surname: 'Fazah', height: 67}
-=> {:given_name=>"Lauren", :surname=>"Fazah", :height=>67}
-> consultant[:weight] += 10
-NoMethodError: undefined method ``+'' for nil:NilClass
-from (pry):2:in ``__pry__''
-> consultant = Hash.new(0).merge({ given_name: 'Lauren', surname: 'Fazah', height: 67})
-=> {:given_name=>"Lauren", :surname=>"Fazah", :height=>67}
-> consultant[:weight] += 10
-=> 10
+> apartment[:address] = { street: '255 Long Road', city: 'Awesomeville', bedrooms: 3}
+=> {:street=>"255 Long Road", :city=>"Awesomeville", :bedrooms=>3}
+> apartment.merge({rent: 1000})
+=> {:street=>"255 Long Road", :city=>"Awesomeville", :bedrooms=>3, :rent=>1000}
 ```
 
 Picking sensible defaults may not always be easy.
 
 ### Code Along: Hash::new
 
-Let's use the different forms of [Hash::new](http://ruby-doc.org/core-2.2.4/Hash.html#method-c-new)
+Let's use the different forms of [Hash::new](http://ruby-doc.org/core-2.3.1/Hash.html#method-c-new)
 to create some hashes in `bin/code_along.rb`.
 
 ### Lab: Hash Shorthand
 
 In [bin/lab.rb](bin/lab.rb) create a hash using the shorthand syntax for
-assigning the keys `:education` and `:experience` with the string "GA WDI".
-Then assign a default of `[]` to the hash and make sure that accessing
- non-existing keys return the default.
+assigning the keys `:sq_ft` `:pets_allowed` with a type-appropriate value
+of your choice. Then assign a default of `[]` to the hash and make sure that
+accessing non-existing keys return the default.
 
 ## Assigning and Accessing Elements in a Ruby Hash
 
-### Demo: Assigning and Accessing
+### Demo: Accessing, Modifying, and Deleting
 
 ```ruby
-> consultant[:weight]
-=> 0
-> consultant[:weight] = 185
-=> 185
-> consultant[:weight] += 5
-=> 190
-> consultant[:surname]
-=> "Fazah"
-> consultant[:surname].prepend 'O\''
-=> "O'Fazah"
-> consultant[:surname]
-=> "O'Fazah"
+> apartment[:occupants] = []
+=> []
+> lee = {name: "Lee", age: 24, dog: "Fluffy"}
+=> {:name=>"Lee", :age=>24, :dog=>"Fluffy"}
+> adrian = {name: "Lee", age: 24, cat: "Scratchy"}
+=> {:name=>"Adrian", :age=>25, :cat: "Scratchy"}
+> apartment[:occupants].push(lee, adrian)
+=> [{:name=>"Lee", :age=>24, :dog=>"Fluffy"}, {:name=>"Lee", :age=>24, :cat=>"Scratchy"}]
+> apartment[:occupants][1].delete(:cat)
+=> "Scratchy"
+> apartment[:rent] += 150
+=> 1150
 ```
 
 ### Lab: Appending
 
-Append `" Boston"` to both `:experience` and `:education` in the hash in
-[bin/lab.rb](bin/lab.rb).  Append one or more item of your choosing to the
-values at each of these keys.
+Add roommate Bo to `:occupants` in the hash in [bin/lab.rb](bin/lab.rb).
+Append one or more properties of your choosing to the roommate objects, such as
+`:job` or `:education`.
 
 ### Demo: Hash Keys
 
 To get an Array of the keys that have been set in a hash, use `Hash#keys`.
 
 ```ruby
-> consultant.keys
-=> [:given_name, :surname, :height, :weight]
+> apartment.keys
+=> [:address, :city, :bedrooms, :occupants, :rent]
 ```
 
 ### Lab: Hash.new Initialized With Default
 
 If you noticed during the demo above, we were able to add a default value of
-an empty string to the `consultant` hash using `consultant.default = ''`.
+an empty string to the `apartment` hash using `apartment.default = ''`.
 
 What if we wanted to instantiate our new hash with this default right off the
- bat? Checkout the Ruby docs on [new hashes with default blocks](http://ruby-doc.org/core-2.3.0/Hash.html#new-method).
+ bat? Checkout the Ruby docs on [new hashes with default blocks](http://ruby-doc.org/core-2.3.1/Hash.html#new-method).
 
 Then, in `bin/lab.rb` initialize a new hash using `Hash.new` with a block that
  sets the default value (without using `.default`) of all keys to the string

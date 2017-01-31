@@ -84,8 +84,6 @@ Let's look at different ways to create a Hash.
 => {}
 > apartment = Hash.new('')
 => {}
-> apartment.default = ''
-=> ""
 > apartment[:address]
 => ""
 > apartment[:address] = { street: '255 Long Road', city: 'Awesomeville', bedrooms: 3}
@@ -143,9 +141,6 @@ To get an Array of the keys that have been set in a hash, use `Hash#keys`.
 ```
 
 ### Lab: Hash.new Initialized With Default
-
-If you noticed during the demo above, we were able to add a default value of
-an empty string to the `apartment` hash using `apartment.default = ''`.
 
 What if we wanted to instantiate our new hash with this default right off the
  bat? Checkout the Ruby docs on [new hashes with default blocks](http://ruby-doc.org/core-2.3.1/Hash.html#new-method).

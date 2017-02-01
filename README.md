@@ -1,4 +1,4 @@
-![General Assembly Logo](http://i.imgur.com/ke8USTq.png)
+[![General Assembly Logo](https://camo.githubusercontent.com/1a91b05b8f4d44b5bbfb83abac2b0996d8e26c92/687474703a2f2f692e696d6775722e636f6d2f6b6538555354712e706e67)](https://generalassemb.ly/education/web-development-immersive)
 
 # Ruby Hashes
 
@@ -84,8 +84,6 @@ Let's look at different ways to create a Hash.
 => {}
 > apartment = Hash.new('')
 => {}
-> apartment.default = ''
-=> ""
 > apartment[:address]
 => ""
 > apartment[:address] = { street: '255 Long Road', city: 'Awesomeville', bedrooms: 3}
@@ -144,9 +142,6 @@ To get an Array of the keys that have been set in a hash, use `Hash#keys`.
 
 ### Lab: Hash.new Initialized With Default
 
-If you noticed during the demo above, we were able to add a default value of
-an empty string to the `apartment` hash using `apartment.default = ''`.
-
 What if we wanted to instantiate our new hash with this default right off the
  bat? Checkout the Ruby docs on [new hashes with default blocks](http://ruby-doc.org/core-2.3.1/Hash.html#new-method).
 
@@ -158,5 +153,5 @@ Then, in `bin/lab.rb` initialize a new hash using `Hash.new` with a block that
 ## [License](LICENSE)
 
 1.  All content is licensed under a CC­BY­NC­SA 4.0 license.
-1.  All software code is licensed under GNU GPLv3. For commercial use or alternative
-licensing, please contact legal@ga.co.
+1.  All software code is licensed under GNU GPLv3. For commercial use or
+    alternative licensing, please contact legal@ga.co.

@@ -86,10 +86,12 @@ Let's look at different ways to create a Hash.
 => {}
 > apartment[:address]
 => ""
-> apartment[:address] = { street: '255 Long Road', city: 'Awesomeville', bedrooms: 3}
+> apartment[:address] = { street: '255 Long Road', city: 'Awesomeville'}
 => {:street=>"255 Long Road", :city=>"Awesomeville", :bedrooms=>3}
-> apartment.merge({rent: 1000})
-=> {:street=>"255 Long Road", :city=>"Awesomeville", :bedrooms=>3, :rent=>1000}
+> apartment[:bedrooms] = 3
+=> 3
+> apartment.merge!({rent: 1000})
+=> {:address=>{:street=>"255 Long Road", :city=>"Awesomeville"}, :bedrooms=>3, :rent=>1000}
 ```
 
 Picking sensible defaults may not always be easy.
@@ -137,7 +139,7 @@ To get an Array of the keys that have been set in a hash, use `Hash#keys`.
 
 ```ruby
 > apartment.keys
-=> [:address, :city, :bedrooms, :occupants, :rent]
+=> [:address, :bedrooms, :occupants, :rent]
 ```
 
 ### Lab: Hash.new Initialized With Default

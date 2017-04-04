@@ -117,10 +117,10 @@ accessing non-existing keys return the default.
 => []
 > lee = {name: "Lee", age: 24, dog: "Fluffy"}
 => {:name=>"Lee", :age=>24, :dog=>"Fluffy"}
-> adrian = {name: "Lee", age: 24, cat: "Scratchy"}
-=> {:name=>"Adrian", :age=>25, :cat: "Scratchy"}
+> adrian = {name: "Adrian", age: 25, cat: "Scratchy"}
+=> {:name=>"Adrian", :age=>25, :cat=>"Scratchy"}
 > apartment[:occupants].push(lee, adrian)
-=> [{:name=>"Lee", :age=>24, :dog=>"Fluffy"}, {:name=>"Lee", :age=>24, :cat=>"Scratchy"}]
+=> [{:name=>"Lee", :age=>24, :dog=>"Fluffy"}, {:name=>"Adrian", :age=>25, :cat=>"Scratchy"}]
 > apartment[:occupants][1].delete(:cat)
 => "Scratchy"
 > apartment[:rent] += 150

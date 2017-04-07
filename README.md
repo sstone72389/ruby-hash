@@ -151,6 +151,34 @@ Then, in `bin/lab.rb` initialize a new hash using `Hash.new` with a block that
  sets the default value (without using `.default`) of all keys to the string
 `"Sorry, <keyname> does not exist".`
 
+### Demo: Hash as Final Argument to Function
+
+Curly braces are not necessary when the last parameter to a function is a hash.
+
+```ruby
+def mad_lib(greeting, opts_hash)
+
+  puts greeting
+
+  [
+    "This morning I came to campus and ran into #{opts_hash[:name]}.",
+    "We talked about #{opts_hash[:noun]},",
+    "which is a #{opts_hash[:adjective]} subject.",
+    "We couldn't talk for long though since I had to",
+    "#{opts_hash[:verb]} to class."
+  ].join(' ')
+end
+
+mad_lib('Hello, please enjoy this madlib!', noun: 'rainbows', adjective: 'gritty', verb: 'scoot', name: 'Ric Flair')
+
+# mad_lib('Hello', {
+#   noun: 'rainbows',
+#   adjective: 'gritty',
+#   verb: 'scoot',
+#   name: 'Ric Flair'
+# })
+```
+
 
 ## [License](LICENSE)
 

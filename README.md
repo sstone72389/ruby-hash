@@ -86,10 +86,12 @@ Let's look at different ways to create a Hash.
 => {}
 > apartment[:address]
 => ""
-> apartment[:address] = { street: '255 Long Road', city: 'Awesomeville', bedrooms: 3}
-=> {:street=>"255 Long Road", :city=>"Awesomeville", :bedrooms=>3}
-> apartment.merge({rent: 1000})
-=> {:street=>"255 Long Road", :city=>"Awesomeville", :bedrooms=>3, :rent=>1000}
+> apartment[:address] = { street: '255 Long Road', city: 'Awesomeville'}
+=> {:street=>"255 Long Road", :city=>"Awesomeville"}
+> apartment[:bedrooms] = 3
+=> 3
+> priced_apartment = apartment.merge({rent: 1000})
+=> {:address=>{:street=>"255 Long Road", :city=>"Awesomeville"}, :bedrooms=>3, :rent=>1000}
 ```
 
 Picking sensible defaults may not always be easy.
@@ -111,17 +113,17 @@ accessing non-existing keys return the default.
 ### Demo: Accessing, Modifying, and Deleting
 
 ```ruby
-> apartment[:occupants] = []
+> priced_apartment[:occupants] = []
 => []
 > lee = {name: "Lee", age: 24, dog: "Fluffy"}
 => {:name=>"Lee", :age=>24, :dog=>"Fluffy"}
-> adrian = {name: "Lee", age: 24, cat: "Scratchy"}
-=> {:name=>"Adrian", :age=>25, :cat: "Scratchy"}
-> apartment[:occupants].push(lee, adrian)
-=> [{:name=>"Lee", :age=>24, :dog=>"Fluffy"}, {:name=>"Lee", :age=>24, :cat=>"Scratchy"}]
-> apartment[:occupants][1].delete(:cat)
+> adrian = {name: "Adrian", age: 25, cat: "Scratchy"}
+=> {:name=>"Adrian", :age=>25, :cat=>"Scratchy"}
+> priced_apartment[:occupants].push(lee, adrian)
+=> [{:name=>"Lee", :age=>24, :dog=>"Fluffy"}, {:name=>"Adrian", :age=>25, :cat=>"Scratchy"}]
+> priced_apartment[:occupants][1].delete(:cat)
 => "Scratchy"
-> apartment[:rent] += 150
+> priced_apartment[:rent] += 150
 => 1150
 ```
 
@@ -136,8 +138,8 @@ Append one or more properties of your choosing to the roommate objects, such as
 To get an Array of the keys that have been set in a hash, use `Hash#keys`.
 
 ```ruby
-> apartment.keys
-=> [:address, :city, :bedrooms, :occupants, :rent]
+> priced_apartment.keys
+=> [:address, :bedrooms, :occupants, :rent]
 ```
 
 ### Lab: Hash.new Initialized With Default
@@ -148,6 +150,34 @@ What if we wanted to instantiate our new hash with this default right off the
 Then, in `bin/lab.rb` initialize a new hash using `Hash.new` with a block that
  sets the default value (without using `.default`) of all keys to the string
 `"Sorry, <keyname> does not exist".`
+
+### Demo: Hash as Final Argument to Function
+
+Curly braces are not necessary when the last parameter to a function is a hash.
+
+```ruby
+def mad_lib(greeting, opts_hash)
+
+  puts greeting
+
+  [
+    "This morning I came to campus and ran into #{opts_hash[:name]}.",
+    "We talked about #{opts_hash[:noun]},",
+    "which is a #{opts_hash[:adjective]} subject.",
+    "We couldn't talk for long though since I had to",
+    "#{opts_hash[:verb]} to class."
+  ].join(' ')
+end
+
+mad_lib('Hello, please enjoy this madlib!', noun: 'rainbows', adjective: 'gritty', verb: 'scoot', name: 'Ric Flair')
+
+# mad_lib('Hello', {
+#   noun: 'rainbows',
+#   adjective: 'gritty',
+#   verb: 'scoot',
+#   name: 'Ric Flair'
+# })
+```
 
 
 ## [License](LICENSE)
